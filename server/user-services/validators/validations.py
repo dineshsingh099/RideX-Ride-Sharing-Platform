@@ -1,15 +1,19 @@
 import re
+from fastapi import HTTPException
 
-def validate_phone(phone: str) -> str:
+def validate_phone(number: str) -> str:
     pattern = r"^[6-9]\d{9}$"
-    if not re.match(pattern, phone):
-        raise ValueError("Invalid phone number. Must be 10 digits.")
-    return phone
+    if not re.match(pattern, number):
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid phone number"
+        )
+    return number
 
 def validate_password(password: str) -> str:
     password = password.strip()
     errors = []
-    
+
     if len(password) < 8:
         errors.append("Password must be at least 8 characters long")
     if len(password) > 128:
@@ -22,7 +26,11 @@ def validate_password(password: str) -> str:
         errors.append("Password must contain at least one number")
     if not re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
         errors.append("Password must contain at least one special character")
+
     if errors:
-        raise ValueError(errors)   
-    
+        raise HTTPException(
+            status_code=400,
+            detail=", ".join(errors)
+        )
+
     return password

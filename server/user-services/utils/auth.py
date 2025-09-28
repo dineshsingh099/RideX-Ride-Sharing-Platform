@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from jose import jwt, JWTError, ExpiredSignatureError
 from config.settings import settings
 from typing import Optional
+from fastapi import HTTPException, status
 
 pwd_context = CryptContext(schemes=["bcrypt"], bcrypt__rounds=12, deprecated="auto")
 
@@ -22,12 +23,15 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
     return encoded_jwt
 
-# =================================== Access Token Decoding ===================================================
-def decode_access_token(token: str) -> Optional[dict]:
+#======Verify Token and return user_id=================
+def verify_token(token: str) -> str:
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
-        return payload
+        user_id = payload.get("sub")
+        if not user_id:
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token invalid")
+        return user_id
     except ExpiredSignatureError:
-        return {"error": "Token expired"}
-    except JWTError as e:
-        return {"error": f"Invalid token: {str(e)}"}
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token expired")
+    except JWTError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")

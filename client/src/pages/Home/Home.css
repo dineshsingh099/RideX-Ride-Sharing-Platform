@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	font-family: "Roboto", sans-serif;
+}
+
+section {
+	height: 100vh;
+	padding-top: 100px;
+	padding-bottom: 80px;
+}
+
+.hero {
+	min-height: 90vh;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 60px;
+	text-align: left;
+	color: white;
+	background-color: #1f1d30;
+	background-image: linear-gradient(
+		135deg,
+		rgba(67, 27, 61, 0.2) 0%,
+		rgba(31, 29, 48, 0.2) 100%
+	);
+	position: relative;
+	overflow: hidden;
+}
+
+.hero::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(
+		circle at top right,
+		rgba(255, 255, 255, 0.05),
+		transparent 70%
+	);
+	z-index: 0;
+}
+
+.hero-left {
+	flex: 1;
+	position: relative;
+	z-index: 1;
+}
+
+.hero-right {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.hero-right img {
+	max-width: 500px;
+	width: 100%;
+	margin-right: -200px;
+	height: auto;
+	border-radius: 15px;
+	animation: fadeInRight 1s ease forwards;
+}
+
+.hero-content {
+	max-width: 800px;
+}
+
+.hero-content h1 {
+	font-size: 3rem;
+	margin-bottom: 20px;
+	margin-top: 100px;
+	color: white;
+	text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content h1 span {
+	color: hwb(16 0% 0%);
+}
+
+.hero-content p {
+	font-size: 1.2rem;
+	margin-bottom: 30px;
+	color: white;
+	text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.btn-hero {
+	padding: 12px 25px;
+	background-color: hwb(16 0% 0%);
+	color: white;
+	text-decoration: none;
+	border-radius: 6px;
+	font-weight: 700;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+	box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+	display: inline-block;
+}
+
+.btn-hero:hover {
+	background-color: hwb(16 0% 0%);
+	color: white;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.about {
+	width: 100%;
+	padding: 80px 20px;
+	background-color: #e0f7fa;
+}
+
+.about-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.about-title {
+	font-size: 2.5rem;
+	color: #0d1b2a;
+	margin-bottom: 25px;
+}
+
+.about-title span {
+	font-size: 2.5rem;
+	color: orangered;
+	margin-bottom: 25px;
+}
+
+.about-text {
+	font-size: 1.1rem;
+	color: #0d1b2a;
+	line-height: 1.8;
+}
+
+.highlight-orange {
+	color: orangered;
+	font-weight: bold;
+}
+
+.highlight-darkblue {
+	color: #0d1b2a;
+	font-weight: bold;
+}
+
+.services {
+	width: 100%;
+	padding: 80px 20px;
+	background-color: #1f1d30;
+	text-align: center;
+}
+
+.services-container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.services-title {
+	font-size: 2.5rem;
+	color: white;
+	margin-bottom: 50px;
+}
+
+.service-cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 30px;
+}
+
+.service-card {
+	background-color: #2a273f;
+	padding: 30px 20px;
+	border-radius: 15px;
+	width: 280px;
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.service-icon {
+	font-size: 3rem;
+	color: orangered;
+	margin-bottom: 20px;
+}
+
+.service-card h3 {
+	font-size: 1.5rem;
+	margin-bottom: 15px;
+	color: #ffffff;
+}
+
+.service-card p {
+	font-size: 1rem;
+	color: #e0e0e0;
+	line-height: 1.6;
+}
+
+.faq {
+	width: 100%;
+	padding: 80px 20px;
+	background-color: #e0f7fa;
+	text-align: center;
+}
+
+.faq-container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.faq-title {
+	font-size: 2.5rem;
+	color: #2a273f;
+	margin-bottom: 50px;
+}
+
+.faq-cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 30px;
+}
+
+.faq-card {
+	background-color: #ffffff;
+	padding: 30px 20px;
+	border-radius: 15px;
+	width: 300px;
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.faq-card h3 {
+	font-size: 1.3rem;
+	margin-bottom: 15px;
+	color: #1f1d30;
+}
+
+.faq-card p {
+	font-size: 1rem;
+	color: #0d1b2a;
+	line-height: 1.6;
+}
+
+
+

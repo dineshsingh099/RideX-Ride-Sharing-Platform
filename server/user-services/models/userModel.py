@@ -3,7 +3,7 @@ from pydantic import BaseModel, EmailStr
 class UserModel(BaseModel):
     name: str
     email: EmailStr
-    phone: str
+    number: str
     password: str
     verifyOtp: str = " "
     verifyOtpExpireAt: int = 0

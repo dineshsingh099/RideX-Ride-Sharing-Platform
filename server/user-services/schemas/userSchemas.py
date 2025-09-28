@@ -5,11 +5,11 @@ from typing import Optional
 class UserCreate(BaseModel):
     name: str
     email: EmailStr
-    phone: str
+    number: str
     password: str
     
-    @validator("phone")
-    def phone_validation(cls, v):
+    @validator("number")
+    def number_validation(cls, v):
         return validate_phone(v)
         
     @validator("password")
@@ -20,7 +20,7 @@ class UserResponse(BaseModel):
     id: str
     name: str
     email: EmailStr
-    phone: str
+    number: str
     isAccountVerified: bool = False
 
     class Config:
